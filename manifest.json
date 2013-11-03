@@ -1,0 +1,15 @@
+{
+	"manifest_version":2,
+	"name":"LoveLive! Chrome Extension",
+	"description":"This extension will heals you with LoveLive.",
+	"version":"0.1",
+
+	"permissions":[
+		"http://www.tumblr.com/tagged/*"
+	],
+
+	"browser_action":{
+		"default_icon":"icon.png",
+		"default_popup":"popup.html"
+	}
+}
