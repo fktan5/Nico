@@ -3,14 +3,28 @@
 	"name":"LoveLive! Chrome Extension",
 	"description":"This extension will heals you with LoveLive.",
 	"version":"0.1",
+  "content_security_policy": "script-src 'self' http://ajax.googleapis.com; object-src 'self'",
 
 	"permissions":[
-		"http://www.tumblr.com/tagged/*"
+		"http://ajax.googleapis.com/*",
+		"http://*/*"
+	],
+
+	"content_scripts":[
+		{
+			"matches":["http://*/*"],
+			"js":["jquery-1.10.2.min.js", "popup.js"]
+		}
 	],
 
 	"browser_action":{
 		"default_icon":"icon.png",
 		"default_popup":"popup.html",
 		"default_title":"Wonder Zone"
-	}
+	},
+
+	"web_accessible_resources":[
+		"popup.html"
+	]
 }
+

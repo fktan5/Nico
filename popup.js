@@ -5,7 +5,7 @@
 /**
  * @type {string}
  */
-var QUERY = 'lovelive';
+var QUERY = "nico yazawa";
 
 var loveliveGenerator = {
 
@@ -14,24 +14,24 @@ var loveliveGenerator = {
 		'&v=1.0&safe=on',
 
 	requestLoveLive: function(){
-		console.log(this.searchOnAjax_);
 		$.ajax({
 			type: 'GET',
 			url: this.searchOnAjax_,
-			dataType: 'jsonp',
-			success: function(json){
-				console.log(json);
-				
-			}
+			dataType: 'jsonp'
+		}).done(function(data){
+			loveliveGenerator.setImage(data);
 		});
 	},
 
- 	showImages_: function(e) {
-		var result = JSON.parse(e.responseText);
-		for(var i=0; i<result.item.length; i++){
-			
+	setImage : function(data){
+		var objects = data.responseData.results;
+		for(var i=0;i< objects.length; i++){
+			console.log(objects[i]);
+			var img = document.createElement('img');
+			img.src = objects[i].url;
+			document.body.appendChild(img);
 		}
-	}
+	},
 };
 
 document.addEventListener('DOMContentLoaded', function () {
